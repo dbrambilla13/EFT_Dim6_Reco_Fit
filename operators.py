@@ -81,4 +81,5 @@ operator['cqq3'] = {
                     'variables' : ('etaj1','dphijj','detajj','jetpt1',),
                     'range' : (-0.7,0.7)
 }
-'''
+
+
