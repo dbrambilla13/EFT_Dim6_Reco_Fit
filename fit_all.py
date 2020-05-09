@@ -1,3 +1,6 @@
+# first setup combine ... ()
+# cd ~/combine/CMSSW_10_2_13/src/ ; cmsenv ; cd -
+
 import os
 
 tag='v2'
@@ -5,6 +8,8 @@ tag='v2'
 # define output dir for everything
 if (os.path.isdir(tag) == False):
     os.mkdir(tag)
+script_dir=os.getcwd()
+os.chdir(tag)
 
 # various parameters
 combine_folder="/afs/cern.ch/user/d/dbrambil/combine/CMSSW_10_2_13/src/"
@@ -35,7 +40,7 @@ os.system('eval `scramv1 runtime -sh`')
 os.chdir(save_dir)
 
 # create output csv file (and REMOVE the older one)
-f = open("results.csv","w")
+f = open("results_" + tag + ".csv","w")
 # write first line
 f.write("operator,variable,1sigmaL,1sigmaR,2sigmaL,2sigmaR\n")
 f.close()
@@ -45,95 +50,14 @@ if (os.path.isdir("ll_scans") == False):
     os.mkdir("ll_scans")
     
 # define operators, variables and ranges!
-operator = {}
-
-operator['cHDD'] = {
-                    'variables' : ('jetpt1','etaj1','detajj','pt1'),
-                    'range' : (-4,4)
-}
-
-operator['cHWB'] = {
-                    'variables' : ('jetpt1','etaj1','detajj','pt1'),
-                    'range' : (-4,4)
-}
-
-operator['cHW'] = {
-                    'variables' : ('pt1','pt2','mll'),
-                    'range' : (-8,8)
-}
-
-operator['cHbox'] = {
-                    'variables' : ('etaj1','jetpt1','pt2'),
-                    'range' : (-1,1)
-}
-
-# missing bsm term!
-# operator['cHl1'] = {
-#                     'variables' : ('pt1','pt2','mll'),
-#                     'range' : (-100,100)
-# }
-
-# not produced
-# operator['cHl3'] = {
-#                     'variables' : ('pt1','jetpt1','detajj','etaj1'),
-#                     'range' : (-2,2)
-# }
-
-# not produced
-# operator['cHq1'] = {
-#                     'variables' : ('jetpt1','pt1','mll'),
-#                     'range' : (-3,3)
-# }
-
-operator['cHq3'] = {
-                    'variables' : ('pt1','jetpt1','mll','detajj'), # to be invented
-                    'range' : (-5,4)
-}
-
-operator['cW'] = {
-                    'variables' : ('pt1','mll'), # already known
-                    'range' : (-1,1)
-}
-
-operator['cll1'] = {
-                    'variables' : ('pt1','jetpt1','mll','detajj'), # to be invented
-                    'range' : (-10,5)
-}
-
-# not produced
-# operator['cll'] = {
-#                     'variables' : ('pt1','mll','dphijj'),
-#                     'range' : (-100,100 )
-# }
-
-operator['cqq11'] = {
-                    'variables' : ('etaj1','dphijj','detajj','jetpt1'),
-                    'range' : (-2,2)
-}
-
-operator['cqq1'] = {
-                    'variables' : ('etaj1','dphijj','detajj','jetpt1'),
-                    'range' : (-2,2)
-}
-
-operator['cqq31'] = {
-                    'variables' : ('etaj1','dphijj','detajj','jetpt1'),
-                    'range' : (-0.7,0.7)
-}
-
-operator['cqq3'] = {
-                    'variables' : ('etaj1','dphijj','detajj','jetpt1'),
-                    'range' : (-0.7,0.7)
-}
-
-
+import operators
 
 # now the true code begins!
 
-for op in operator :
-    for var in operator[op]['variables'] :
+for op in operators.operator :
+    for var in operators.operator[op]['variables'] :
         print('>>> processing {}:{}'.format(op,var)) 
-        print('range: ({},{})'.format(operator[op]['range'][0],operator[op]['range'][1]))
+        print('range: ({},{})'.format(operators.operator[op]['range'][0],operators.operator[op]['range'][1]))
         
         # combine datacards
         datacard1= "{}/{}/{}/events/datacard.txt".format(wz_config_path,dc_folder_wz,wz_cut)
@@ -153,14 +77,17 @@ for op in operator :
             --verbose {}    ".format   (model_file, # model file
                                         n_points, # number of points for the grid
                                         op, op, # operators (two times...)
-                                        operator[op]['range'][0], # range l for op
-                                        operator[op]['range'][1], # range r for op
+                                        operators.operator[op]['range'][0], # range l for op
+                                        operators.operator[op]['range'][1], # range r for op
                                         verbosity)) # verbosity option
 
         # plot likelihood scan and find intersections
         os.system("root -l -b higgsCombineTest.MultiDimFit.mH125.root higgsCombineTest.MultiDimFit.mH125.root  \
-            draw_v1.cxx\(\\\"k_{}\\\",\\\"{}\\\"\) -q".format(op,var))
+            ../draw_v1.cxx\(\\\"k_{}\\\",\\\"{}\\\"\) -q".format(op,var))
         
         # rename ll file
         os.system("mv ll.png ll_scans/{}_{}_ll_scan.png ".format(op,var)) 
 
+
+# come back to script dir
+os.chdir(script_dir)
