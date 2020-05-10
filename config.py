@@ -1,4 +1,4 @@
-tag='v3'
+tag='less_nuisances'
 
 
 # various parameters

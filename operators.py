@@ -2,12 +2,12 @@ operator = {}
 
 operator['cHDD'] = {
                     'variables' : ('jetpt1','etaj1','detajj','pt1',),
-                    'range' : (-4,4)
+                    'range' : (-10,10)
 }
 
 operator['cHWB'] = {
                     'variables' : ('jetpt1','etaj1','detajj','pt1',),
-                    'range' : (-4,4)
+                    'range' : (-10,10)
 }
 
 operator['cHW'] = {
@@ -17,8 +17,46 @@ operator['cHW'] = {
 
 operator['cHbox'] = {
                     'variables' : ('etaj1','jetpt1','pt2','met',),
+                    'range' : (-2,2)
+}
+
+
+operator['cHq3'] = {
+                    'variables' : ('pt1','jetpt1','mll','detajj',), # to be invented
+                    'range' : (-5,5)
+}
+
+operator['cW'] = {
+                    'variables' : ('pt1',), # already known
                     'range' : (-1,1)
 }
+
+operator['cll1'] = {
+                    'variables' : ('pt1','jetpt1','mll','detajj',), # to be invented
+                    'range' : (-20,5)
+}
+
+
+operator['cqq11'] = {
+                    'variables' : ('etaj1','dphijj','detajj','jetpt1',),
+                    'range' : (-2,2)
+}
+
+operator['cqq1'] = {
+                    'variables' : ('etaj1','dphijj','detajj','jetpt1',),
+                    'range' : (-2,2)
+}
+
+operator['cqq31'] = {
+                    'variables' : ('etaj1','dphijj','detajj','jetpt1',),
+                    'range' : (-1.0,1.0)
+}
+
+operator['cqq3'] = {
+                    'variables' : ('etaj1','dphijj','detajj','jetpt1',),
+                    'range' : (-1.0,1.0)
+}
+
 
 # missing bsm term!
 # operator['cHl1'] = {
@@ -38,45 +76,9 @@ operator['cHbox'] = {
 #                     'range' : (-3,3)
 # }
 
-operator['cHq3'] = {
-                    'variables' : ('pt1','jetpt1','mll','detajj',), # to be invented
-                    'range' : (-5,4)
-}
-
-operator['cW'] = {
-                    'variables' : ('pt1',), # already known
-                    'range' : (-1,1)
-}
-
-operator['cll1'] = {
-                    'variables' : ('pt1','jetpt1','mll','detajj',), # to be invented
-                    'range' : (-10,5)
-}
 
 # not produced
 # operator['cll'] = {
 #                     'variables' : ('pt1','mll','dphijj','met',),
 #                     'range' : (-100,100 )
 # }
-
-operator['cqq11'] = {
-                    'variables' : ('etaj1','dphijj','detajj','jetpt1',),
-                    'range' : (-2,2)
-}
-
-operator['cqq1'] = {
-                    'variables' : ('etaj1','dphijj','detajj','jetpt1',),
-                    'range' : (-2,2)
-}
-
-operator['cqq31'] = {
-                    'variables' : ('etaj1','dphijj','detajj','jetpt1',),
-                    'range' : (-0.7,0.7)
-}
-
-operator['cqq3'] = {
-                    'variables' : ('etaj1','dphijj','detajj','jetpt1',),
-                    'range' : (-0.7,0.7)
-}
-
-

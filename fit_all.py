@@ -60,9 +60,14 @@ for op in ops.operator :
         os.system("root -l -b higgsCombineTest.MultiDimFit.mH125.root higgsCombineTest.MultiDimFit.mH125.root  \
             ../draw_v1.cxx\(\\\"k_{}\\\",\\\"{}\\\"\) -q".format(op,var))
         
-        # rename ll file
+        # rename ll file and move to folder
         os.system("mv ll.png ll_scans/{}_{}_ll_scan.png ".format(op,var)) 
 
+# tidy up files...
+if (os.path.isdir("datacards_and_models") == False):
+    os.mkdir("datacards_and_models")
+os.system("mv combined*.txt datacards_and_models")
+os.system("mv combined*.root datacards_and_models")
 
 # come back to script dir
 os.chdir(script_dir)
