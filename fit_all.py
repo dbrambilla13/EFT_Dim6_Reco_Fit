@@ -3,7 +3,7 @@
 
 import os
 
-tag='v2'
+tag='v3'
 
 # define output dir for everything
 if (os.path.isdir(tag) == False):
@@ -18,8 +18,8 @@ sr_config_path="/afs/cern.ch/user/d/dbrambil/CMSSW_10_2_18/src/PlotsConfiguratio
 # control region config
 wz_config_path="/afs/cern.ch/user/d/dbrambil/CMSSW_10_2_18/src/PlotsConfigurations/Configurations/VBS/EFT/Full2018_cr_WZ/"
 
-# datacard folder signal region
-dc_folder_sr="/datacards_VBS_SS_2018_multiEFT_may07/" 
+# datacard folder signal region 
+dc_folder_sr="/datacards_VBS_SS_2018_multiEFT_may09/"
 # datacard folder WZ control region 
 dc_folder_wz="/datacards_VBS_SS_2018_cr_WZ_full_nuis_mar03/"
 # regions
@@ -34,13 +34,14 @@ n_points="120"
 verbosity=0
 
 # setup combine environment
-save_dir=os.getcwd()
-os.chdir(combine_folder)
-os.system('eval `scramv1 runtime -sh`')
-os.chdir(save_dir)
+# save_dir=os.getcwd()
+# os.chdir(combine_folder)
+# os.system('eval `scramv1 runtime -sh`')
+# os.chdir(save_dir)
+os.system("cd " + combine_folder + "; cmsenv ; cd - ")
 
 # create output csv file (and REMOVE the older one)
-f = open("results_" + tag + ".csv","w")
+f = open("results.csv","w")
 # write first line
 f.write("operator,variable,1sigmaL,1sigmaR,2sigmaL,2sigmaR\n")
 f.close()
