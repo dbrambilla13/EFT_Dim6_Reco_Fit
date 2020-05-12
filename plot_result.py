@@ -7,7 +7,6 @@ f = open(config.tag + '/results.csv','r')
 
 # leggo una riga come stringa
 
-
 read_file = []
 
 line = f.readline()
@@ -51,10 +50,10 @@ histo2Sigma = ROOT.TH1F("histo2Sigma","histo2Sigma",nbins,0,10)
 
 for i in range(nbins):
     histo1Sigma.SetBinContent(i+1,float(records[i][3])-float(records[i][2]))
-    histo1Sigma.GetXaxis().SetBinLabel(i+1,records[i][0] + ' : ' + records[i][1] )
+    histo1Sigma.GetXaxis().SetBinLabel(i+1,records[i][0] + ' (' + records[i][1] + ')')
     histo1Sigma.GetXaxis().ChangeLabel(i+1,45)
     histo2Sigma.SetBinContent(i+1,float(records[i][5])-float(records[i][4]))
-    histo2Sigma.GetXaxis().SetBinLabel(i+1,records[i][0] + ' : ' + records[i][1] )
+    histo2Sigma.GetXaxis().SetBinLabel(i+1,records[i][0] + ' (' + records[i][1] + ')')
     histo2Sigma.GetXaxis().ChangeLabel(i+1,45)
 
 c1 = ROOT.TCanvas()
@@ -67,11 +66,11 @@ histo1Sigma.SetFillColor(ROOT.kOrange)
 ROOT.gStyle.SetOptStat(0)
 
 # printout
-c1.Print("results.png",".png")
-c1.SetLogy()
-c1.Print("results_log.png",".png")
+c1.Print(config.tag + "/results.png",".png")
+histo2Sigma.GetYaxis().SetRangeUser(0,5)
+histo1Sigma.GetYaxis().SetRangeUser(0,5)
+c1.Print(config.tag + "/results_zoom.png",".png")
 
-# creo 4 istogrammi istogrammi con root
-
-# creo il plot degli intervalli di confidenza sovrapponendoli
+# c1.SetLogy()
+# c1.Print(config.tag + "/results_log.png",".png")
 
