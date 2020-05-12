@@ -7,7 +7,7 @@ operator['cHDD'] = {
 
 operator['cHWB'] = {
                     'variables' : ('jetpt1','etaj1','detajj','pt1',),
-                    'range' : (-30,30)
+                    'range' : (-50,50)
 }
 
 operator['cHW'] = {

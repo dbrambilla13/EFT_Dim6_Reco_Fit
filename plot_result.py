@@ -16,10 +16,9 @@ while ( line != ""):
     read_file.append(temp)
     line = f.readline()
      
-# ordino, divido, ecc ecc
-records = []
 
 # select best variables
+records = []
 record_index = 0
 records.append(read_file[1])
 width = float(records[0][3])-float(records[0][2])

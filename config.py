@@ -1,5 +1,5 @@
 # tag='bogus_fixed'
-tag = 'condor_test_final'
+tag = 'all_nuisances_bogus_fix'
 
 # various parameters
 combine_folder="/afs/cern.ch/user/d/dbrambil/combine/CMSSW_10_2_13/src/"
@@ -9,8 +9,8 @@ sr_config_path="/afs/cern.ch/user/d/dbrambil/CMSSW_10_2_18/src/PlotsConfiguratio
 wz_config_path="/afs/cern.ch/user/d/dbrambil/CMSSW_10_2_18/src/PlotsConfigurations/Configurations/VBS/EFT/Full2018_cr_WZ/"
 
 # datacard folder signal region 
-# dc_folder_sr="/datacards_VBS_SS_2018_multiEFT_may09/"
-dc_folder_sr="/datacards_VBS_SS_2018_multiEFT_may09_less_nuisances/"
+dc_folder_sr="/datacards_VBS_SS_2018_multiEFT_may09/"
+# dc_folder_sr="/datacards_VBS_SS_2018_multiEFT_may09_less_nuisances/"
 # datacard folder WZ control region 
 dc_folder_wz="/datacards_VBS_SS_2018_cr_WZ_full_nuis_mar03/"
 # regions
