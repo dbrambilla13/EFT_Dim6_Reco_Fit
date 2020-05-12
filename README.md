@@ -11,4 +11,7 @@ Look at _operators.py_ and _config.py_ modules to modify the parameters for your
 
 
     python sub_all.py
+    # wait for condor to finish jobs ( chech with condor_queue ) 
+    python make_ll_plots.py
+    python plot_result.py
     
