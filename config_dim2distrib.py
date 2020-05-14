@@ -1,5 +1,4 @@
-tag='test_moduli'
-# tag = 'dim2_distrib'
+tag = 'dim2_distrib'
 
 # various parameters
 combine_folder="/afs/cern.ch/user/d/dbrambil/combine/CMSSW_10_2_13/src/"

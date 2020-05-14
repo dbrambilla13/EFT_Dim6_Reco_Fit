@@ -10,8 +10,8 @@ A final comparison plot is then produced by _plot_result.py_ .
 Look at _operators.py_ and _config.py_ modules to modify the parameters for your need.
 
 
-    python sub_all.py
+    python sub_all.py <config_file>.py <operators_file>.py
     # wait for condor to finish jobs ( chech with condor_queue ) 
-    python make_ll_plots.py
-    python plot_result.py
+    python make_ll_plots.py <config_file>.py <operators_file>.py
+    python plot_result.py <config_file>.py <operators_file>.py -b
     

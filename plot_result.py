@@ -75,6 +75,13 @@ histo2Sigma.SetFillColor(ROOT.kOrange)
 histo1Sigma.Draw("same")
 histo1Sigma.SetFillColor(ROOT.kRed)
 
+
+leg = ROOT.TLegend(0.1,0.7,0.4,0.9)
+leg.SetHeader("Legend","C")
+leg.AddEntry(histo1Sigma,"1 Sigma Width","f")
+leg.AddEntry(histo2Sigma,"2 Sigma Width","f")
+leg.Draw()
+
 ROOT.gStyle.SetOptStat(0)
 ROOT.gPad.SetGrid()
 # printout
@@ -114,9 +121,18 @@ for op in ops.operator:
 
     h_2S_Var.Draw()
     h_2S_Var.SetMinimum(0)
+    h_2S_Var.SetMinimum(h_2S_Var.GetMaximum()*1.1)
     h_2S_Var.SetFillColor(ROOT.kCyan)
+    h_2S_Var.SetTitle("")
     h_1S_Var.Draw("same")
     h_1S_Var.SetFillColor(ROOT.kBlue)
+    h_1S_Var.SetTitle("")
+
+    leg = ROOT.TLegend(0.6,0.7,0.9,0.9)
+    leg.SetHeader("Legend","C")
+    leg.AddEntry(h_1S_Var,"1 Sigma Width","f")
+    leg.AddEntry(h_2S_Var,"2 Sigma Width","f")
+    leg.Draw()
 
     ROOT.gStyle.SetOptStat(0)
     ROOT.gPad.SetGrid()

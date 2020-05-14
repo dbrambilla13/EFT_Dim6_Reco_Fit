@@ -7,7 +7,7 @@ operator['cHDD'] = {
 
 operator['cHWB'] = {
                     'variables' : ('jetpt1VSmjj','etaj1VSmjj','detajjVSmjj','pt1VSmjj',),
-                    'range' : (-100,100)
+                    'range' : (-70,70)
 }
 
 operator['cHW'] = {
@@ -17,13 +17,13 @@ operator['cHW'] = {
 
 operator['cHbox'] = {
                     'variables' : ('etaj1VSmjj','jetpt1VSmjj','pt2VSmjj','metVSmjj',),
-                    'range' : (-30,30)
+                    'range' : (-20,20)
 }
 
 
 operator['cHq3'] = {
                     'variables' : ('pt1VSmjj','jetpt1VSmjj','mllVSmjj','detajjVSmjj',), # to be invented
-                    'range' : (-5,5)
+                    'range' : (-4,4)
 }
 
 operator['cW'] = {
@@ -39,22 +39,22 @@ operator['cll1'] = {
 
 operator['cqq11'] = {
                     'variables' : ('etaj1VSmjj','dphijjVSmjj','detajjVSmjj','jetpt1VSmjj',),
-                    'range' : (-2,2)
+                    'range' : (-1,1)
 }
 
 operator['cqq1'] = {
                     'variables' : ('etaj1VSmjj','dphijjVSmjj','detajjVSmjj','jetpt1VSmjj',),
-                    'range' : (-2,2)
+                    'range' : (-1,1)
 }
 
 operator['cqq31'] = {
                     'variables' : ('etaj1VSmjj','dphijjVSmjj','detajjVSmjj','jetpt1VSmjj',),
-                    'range' : (-1.0,1.0)
+                    'range' : (-0.6,0.6)
 }
 
 operator['cqq3'] = {
                     'variables' : ('etaj1VSmjj','dphijjVSmjj','detajjVSmjj','jetpt1VSmjj',),
-                    'range' : (-1.0,1.0)
+                    'range' : (-0.6,0.6)
 }
 
 
