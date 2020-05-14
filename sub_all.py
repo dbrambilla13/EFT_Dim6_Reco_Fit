@@ -1,11 +1,17 @@
-# first setup combine ... ()
-# cd ~/combine/CMSSW_10_2_13/src/ ; cmsenv ; cd -
+# run with python sub_all.py config_file.py operators_file.py
 
 import os
+import sys
 
-# my modules
-import config as cf
-import operators as ops
+# importing modules
+config_module_name = str(sys.argv[1])[:-3]
+print ("importing module" + config_module_name)
+cf = __import__(config_module_name)
+
+operator_module_name = str(sys.argv[2])[:-3]
+print ("importing module" + operator_module_name)
+ops = __import__(operator_module_name)
+
 
 # define output dir for everything
 if (os.path.isdir(cf.tag) == False):
@@ -14,11 +20,11 @@ script_dir=os.getcwd()
 os.chdir(cf.tag)
 
 
-# create output csv file (and REMOVE the older one)
-f = open("results.csv","w")
-# write first line
-f.write("operator,variable,1sigmaL,1sigmaR,2sigmaL,2sigmaR\n")
-f.close()
+# # create output csv file (and REMOVE the older one)
+# f = open("results.csv","w")
+# # write first line
+# f.write("operator,variable,1sigmaL,1sigmaR,2sigmaL,2sigmaR\n")
+# f.close()
 
 # define output dir for likelihood scans
 # if (os.path.isdir("ll_scans") == False):
@@ -81,7 +87,7 @@ for op in ops.operator :
 
 
 # submit all jobs to condor
-os.system("for i in *.sub; do condor_submit $i;  done")
+# os.system("for i in *.sub; do condor_submit $i;  done")
 
 # come back to script dir
 os.chdir(script_dir)

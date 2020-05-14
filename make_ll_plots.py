@@ -1,11 +1,17 @@
-# first setup combine ... ()
-# cd ~/combine/CMSSW_10_2_13/src/ ; cmsenv ; cd -
+# run with python make_ll_plots.py config_file.py operators_file.py
 
 import os
+import sys
 
 # my modules
-import config as cf
-import operators as ops
+# importing modules
+config_module_name = str(sys.argv[1])[:-3]
+print ("importing module" + config_module_name)
+cf = __import__(config_module_name)
+
+operator_module_name = str(sys.argv[2])[:-3]
+print ("importing module" + operator_module_name)
+ops = __import__(operator_module_name)
 
 # define output dir for everything
 if (os.path.isdir(cf.tag) == False):

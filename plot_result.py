@@ -1,9 +1,21 @@
-import ROOT 
+# run with python plot_result.py -b
+# -b is for batch mode
 
-import config 
+import ROOT 
+import sys
+
+# my modules
+# importing modules
+config_module_name = str(sys.argv[1])[:-3]
+print ("importing module" + config_module_name)
+cf = __import__(config_module_name)
+
+operator_module_name = str(sys.argv[2])[:-3]
+print ("importing module" + operator_module_name)
+ops = __import__(operator_module_name)
 
 # apro il file csv
-f = open(config.tag + '/results.csv','r')
+f = open(cf.tag + '/results.csv','r')
 
 # leggo una riga come stringa
 
@@ -15,7 +27,8 @@ while ( line != ""):
     temp = line.split(',')
     read_file.append(temp)
     line = f.readline()
-     
+
+f.close()     
 
 # select best variables
 records = []
@@ -41,10 +54,10 @@ records.sort(key = lambda a : float(a[3]) - float(a[2]))
 
 # produce histogram
 nbins = len(records)
-print(nbins)
+# print(nbins)
 
-histo1Sigma = ROOT.TH1F("histo1Sigma","histo1Sigma",nbins,0,10)
-histo2Sigma = ROOT.TH1F("histo2Sigma","histo2Sigma",nbins,0,10)
+histo1Sigma = ROOT.TH1F("histo1Sigma","histo1Sigma",nbins,0,nbins)
+histo2Sigma = ROOT.TH1F("histo2Sigma","histo2Sigma",nbins,0,nbins)
 
 
 for i in range(nbins):
@@ -58,18 +71,54 @@ for i in range(nbins):
 c1 = ROOT.TCanvas()
 
 histo2Sigma.Draw()
-histo2Sigma.SetFillColor(ROOT.kCyan)
+histo2Sigma.SetFillColor(ROOT.kOrange)
 histo1Sigma.Draw("same")
-histo1Sigma.SetFillColor(ROOT.kOrange)
+histo1Sigma.SetFillColor(ROOT.kRed)
 
 ROOT.gStyle.SetOptStat(0)
-
+ROOT.gPad.SetGrid()
 # printout
-c1.Print(config.tag + "/results.png",".png")
+c1.Print(cf.tag + "/results_all.png",".png")
 histo2Sigma.GetYaxis().SetRangeUser(0,5)
 histo1Sigma.GetYaxis().SetRangeUser(0,5)
-c1.Print(config.tag + "/results_zoom.png",".png")
+c1.Print(cf.tag + "/results_all_zoom.png",".png")
 
 # c1.SetLogy()
-# c1.Print(config.tag + "/results_log.png",".png")
+# c1.Print(cf.tag + "/results_log.png",".png")
 
+
+# make variable comparison prints for every operator
+
+for op in ops.operator:
+
+    elements = [ x for x in read_file[1:] if x[0]== "k_"+op]
+
+    # sorting by width
+    elements.sort(key = lambda el : float(el[3]) - float(el[2]))
+
+    nbins = len(elements)
+    name1 = "h_1S_Var_{}".format(op)
+    name2 = "h_2S_Var_{}".format(op)
+    h_1S_Var = ROOT.TH1F(name1,name1,nbins,0,nbins)
+    h_2S_Var = ROOT.TH1F(name2,name2,nbins,0,nbins)
+
+    for i in range(nbins):
+        h_1S_Var.SetBinContent(i+1,float(elements[i][3])-float(elements[i][2]))
+        h_1S_Var.GetXaxis().SetBinLabel(i+1, elements[i][1] )
+        h_1S_Var.GetXaxis().ChangeLabel(i+1,45)
+        h_2S_Var.SetBinContent(i+1,float(elements[i][5])-float(elements[i][4]))
+        h_2S_Var.GetXaxis().SetBinLabel(i+1, elements[i][1] )
+        h_2S_Var.GetXaxis().ChangeLabel(i+1,45)
+
+    c1 = ROOT.TCanvas()
+
+    h_2S_Var.Draw()
+    h_2S_Var.SetMinimum(0)
+    h_2S_Var.SetFillColor(ROOT.kCyan)
+    h_1S_Var.Draw("same")
+    h_1S_Var.SetFillColor(ROOT.kBlue)
+
+    ROOT.gStyle.SetOptStat(0)
+    ROOT.gPad.SetGrid()
+    # printout
+    c1.Print(cf.tag + "/results_{}.png".format(op),".png")
