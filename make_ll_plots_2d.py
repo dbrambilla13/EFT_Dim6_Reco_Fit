@@ -40,8 +40,7 @@ for couple in ops.op_couple :
         
         print ( "\n>>> processing {}_{} : {}".format(op1,op2,var))
 
-        os.system("root higgsCombineTest.MultiDimFit.mH125_{}_{}_{}.root \
-        ../draw2D.cxx\(\\\"{}\",\\\"{}\\\",\\\"k_{}\\\",\\\"k_c{}\\\"\)".format(op1,op2,var,op1,op2,op1,op2))
+        os.system("root -b higgsCombineTest.MultiDimFit.mH125_{}_{}_{}.root ../draw2D.cxx\(\\\"{}\\\",\\\"{}\\\",\\\"k_{}\\\",\\\"k_{}\\\"\) -q".format(op1,op2,var,op1,op2,op1,op2))
 
         # rename ll file and move to folder
         os.system("mv ll_scan_2D.png ll_scans/{}_{}_{}_ll_scan.png\n".format(op1,op2,var)) 
