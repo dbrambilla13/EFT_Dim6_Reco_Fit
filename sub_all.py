@@ -5,11 +5,11 @@ import sys
 
 # importing modules
 config_module_name = str(sys.argv[1])[:-3]
-print ("importing module" + config_module_name)
+print ("importing module " + config_module_name)
 cf = __import__(config_module_name)
 
 operator_module_name = str(sys.argv[2])[:-3]
-print ("importing module" + operator_module_name)
+print ("importing module " + operator_module_name)
 ops = __import__(operator_module_name)
 
 
