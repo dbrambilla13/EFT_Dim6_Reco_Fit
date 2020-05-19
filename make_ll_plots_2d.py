@@ -21,12 +21,6 @@ script_dir=os.getcwd()
 # change dir to output dir
 os.chdir(cf.tag)
 
-# create output csv file (and REMOVE the older one)
-f = open("results.csv","w")
-# write first line
-f.write("operator,variable,1sigmaL,1sigmaR,2sigmaL,2sigmaR\n")
-f.close()
-
 # create output dir for likelihood scans
 if (os.path.isdir("ll_scans") == False):
     os.mkdir("ll_scans")
