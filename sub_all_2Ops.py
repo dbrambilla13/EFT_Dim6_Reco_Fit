@@ -19,6 +19,7 @@ if (os.path.isdir(cf.tag) == False):
 script_dir=os.getcwd()
 os.chdir(cf.tag)
 
+# full dim6 operators list
 op_list = cf.operator_list
 
 for couple in ops.op_couple :
@@ -47,11 +48,11 @@ for couple in ops.op_couple :
         # combine datacards
         datacard1= "{}/{}/{}/events/datacard.txt".format(cf.wz_config_path,cf.dc_folder_wz,cf.wz_cut)
         datacard2= "{}/{}/{}/{}/datacard.txt".format(cf.sr_config_path,cf.dc_folder_sr,cf.sr_cut,var)
-        combined_datacard= "combined_dc_{}_{}_{}.txt".format(cf.sr_cut,cf.wz_cut,var)
+        combined_datacard= "combined_dc_{}_{}_{}_{}_{}.txt".format(cf.sr_cut,cf.wz_cut,op1,op2,var)
         script_file.write("combineCards.py {} {} > {} \n".format(datacard1,datacard2,combined_datacard))
 
         # create workspace from combined datacard
-        model_file= "combined_dc_{}_{}_{}_model_test.root".format(cf.sr_cut,cf.wz_cut,var)
+        model_file= "combined_dc_{}_{}_{}_{}_{}_model_test.root".format(cf.sr_cut,cf.wz_cut,op1,op2,var)
         script_file.write("text2workspace.py {} -P {} -o {} \n".format(combined_datacard, cf.AAC_model,model_file))
             
         fix_op_list = [x for x in op_list if x != 'k_'+op1 and x != 'k_'+op2]

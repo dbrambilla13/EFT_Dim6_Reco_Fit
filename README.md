@@ -22,11 +22,6 @@ Two operators scans
     python make_ll_plots_2d.py config_two_ops.py operators_two_ops.py
 
 
-# To Do
-
-* Correction for fixed operator in _one operator_
-* fix the last problem with the available 2d operators
-
 
 likelihood scan drawing scripts borrowed from
 https://github.com/amassiro/AnalyticAnomalousCoupling

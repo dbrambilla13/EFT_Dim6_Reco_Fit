@@ -16,18 +16,18 @@ op_couple['cW_cqq1'] ={
     'variables' : ('jetpt1','pt1','jetpt1VSmjj','pt1VSmjj',),
 }
 
-# op_couple['cW_cHW'] ={
-#     'op1' : 'cW',
-#     'op2' : 'cHW',
-#     'range_op1' : (-1.0,1.0),
-#     'range_op2' : (-1.0,1.0),
-#     'variables' : ('pt1','mll','pt1VSmjj','mllVSmjj',),
-# }
+op_couple['cW_cHW'] ={
+    'op1' : 'cW',
+    'op2' : 'cHW',
+    'range_op1' : (- 2.0, 2.0),
+    'range_op2' : (-15.0,15.0),
+    'variables' : ('pt1','mll','pt1VSmjj','mllVSmjj',),
+}
 
-# op_couple['cW_cll1'] ={
-#     'op1' : 'cW',
-#     'op2' : 'cll1',
-#     'range_op1' : (-1.0,1.0),
-#     'range_op2' : (-1.0,1.0),
-#     'variables' : ('pt1','jetpt1','pt1VSmjj','jetpt1VSmjj',),
-# }
+op_couple['cW_cll1'] ={
+    'op1' : 'cW',
+    'op2' : 'cll1',
+    'range_op1' : ( -2.0, 2.0),
+    'range_op2' : (-20.0,20.0),
+    'variables' : ('pt1','jetpt1','pt1VSmjj','jetpt1VSmjj',),
+}

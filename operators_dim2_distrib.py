@@ -58,13 +58,13 @@ operator['cqq3'] = {
 }
 
 
-# missing bsm term!
-# operator['cHl1'] = {
-#                     'variables' : ('pt1VSmjj','pt2VSmjj','mllVSmjj','metVSmjj',),
-#                     'range' : (-100,100)
-# }
 
-# not produced
+operator['cHl1'] = {
+                    'variables' : ('pt1VSmjj','pt2VSmjj','mllVSmjj','metVSmjj',),
+                    'range' : (-100,100)
+}
+
+# missing bsm term!
 # operator['cHl3'] = {
 #                     'variables' : ('pt1VSmjj','jetpt1VSmjj','detajjVSmjj','etaj1VSmjj','metVSmjj',),
 #                     'range' : (-2,2)
