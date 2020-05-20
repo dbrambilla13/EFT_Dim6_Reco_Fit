@@ -38,6 +38,7 @@ for couple in ops.op_couple :
 
         # rename ll file and move to folder
         os.system("mv ll_scan_2D.png ll_scans/{}_{}_{}_ll_scan.png\n".format(op1,op2,var)) 
+        os.system("mv ll_scan_2D.root ll_scans/{}_{}_{}_ll_scan.root\n".format(op1,op2,var)) 
      
 # come back to script dir
 os.chdir(script_dir)

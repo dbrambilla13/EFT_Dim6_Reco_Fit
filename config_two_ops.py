@@ -20,9 +20,8 @@ wz_cut="wz_vbs_total"
 AAC_model = "HiggsAnalysis.AnalyticAnomalousCoupling.AnomalousCouplingEFT:analiticAnomalousCouplingEFT"
 
 # combine likelihood scan options (should be set for each operator instead...)
-n_points="14400"  # for grid 120*120=14400
-# n_points="1000"  # TEST VALUE
-verbosity=0
+n_points="2500"  # for grid 50x50
+verbosity=1
 
 # for condor submission
 queue_name = "workday"

@@ -34,12 +34,12 @@ f.close()
 records = []
 record_index = 0
 records.append(read_file[1])
-width = float(records[0][3])-float(records[0][2])
+width = 0.5*(float(records[0][3])-float(records[0][2]))
 prev_ele_name = records[0][0]
 
 for element in read_file[2:]:
     if element[0] == prev_ele_name:
-        new_width = float(element[3])-float(element[2])
+        new_width = 0.5*(float(element[3])-float(element[2]))
         if  new_width < width:
             records[record_index] = element
             width = new_width
@@ -47,10 +47,10 @@ for element in read_file[2:]:
         prev_ele_name = element[0]
         record_index += 1        
         records.append(element)
-        width = float(element[3])-float(element[2])
+        width = 0.5*(float(element[3])-float(element[2]))
 
 # sorting by 1 sigma interval width
-records.sort(key = lambda a : float(a[3]) - float(a[2]))
+records.sort(key = lambda a : 0.5*(float(a[3]) - float(a[2])))
 
 # produce histogram
 nbins = len(records)
@@ -59,25 +59,27 @@ nbins = len(records)
 histo1Sigma = ROOT.TH1F("histo1Sigma","histo1Sigma",nbins,0,nbins)
 histo2Sigma = ROOT.TH1F("histo2Sigma","histo2Sigma",nbins,0,nbins)
 
-
+# plotting half CI widths
 for i in range(nbins):
-    histo1Sigma.SetBinContent(i+1,float(records[i][3])-float(records[i][2]))
+    histo1Sigma.SetBinContent(i+1,0.5*(float(records[i][3])-float(records[i][2])))
     histo1Sigma.GetXaxis().SetBinLabel(i+1,records[i][0] + ' (' + records[i][1] + ')')
     histo1Sigma.GetXaxis().ChangeLabel(i+1,45)
-    histo2Sigma.SetBinContent(i+1,float(records[i][5])-float(records[i][4]))
+    histo2Sigma.SetBinContent(i+1,0.5*(float(records[i][5])-float(records[i][4])))
     histo2Sigma.GetXaxis().SetBinLabel(i+1,records[i][0] + ' (' + records[i][1] + ')')
     histo2Sigma.GetXaxis().ChangeLabel(i+1,45)
 
 c1 = ROOT.TCanvas()
 
+
 histo2Sigma.Draw()
+histo2Sigma.SetTitle("")
 histo2Sigma.SetFillColor(ROOT.kOrange)
 histo1Sigma.Draw("same")
+histo1Sigma.SetTitle("")
 histo1Sigma.SetFillColor(ROOT.kRed)
 
 
 leg = ROOT.TLegend(0.1,0.7,0.4,0.9)
-leg.SetHeader("Legend","C")
 leg.AddEntry(histo1Sigma,"1 Sigma Width","f")
 leg.AddEntry(histo2Sigma,"2 Sigma Width","f")
 leg.Draw()
@@ -89,6 +91,7 @@ c1.Print(cf.tag + "/results_all.png",".png")
 histo2Sigma.GetYaxis().SetRangeUser(0,5)
 histo1Sigma.GetYaxis().SetRangeUser(0,5)
 c1.Print(cf.tag + "/results_all_zoom.png",".png")
+c1.Print(cf.tag + "/results_all_zoom.root",".root")
 
 # c1.SetLogy()
 # c1.Print(cf.tag + "/results_log.png",".png")
@@ -101,7 +104,7 @@ for op in ops.operator:
     elements = [ x for x in read_file[1:] if x[0]== "k_"+op]
 
     # sorting by width
-    elements.sort(key = lambda el : float(el[3]) - float(el[2]))
+    elements.sort(key = lambda el : 0.5*(float(el[3]) - float(el[2])))
 
     nbins = len(elements)
     name1 = "h_1S_Var_{}".format(op)
@@ -110,10 +113,10 @@ for op in ops.operator:
     h_2S_Var = ROOT.TH1F(name2,name2,nbins,0,nbins)
 
     for i in range(nbins):
-        h_1S_Var.SetBinContent(i+1,float(elements[i][3])-float(elements[i][2]))
+        h_1S_Var.SetBinContent(i+1,0.5*(float(elements[i][3])-float(elements[i][2])))
         h_1S_Var.GetXaxis().SetBinLabel(i+1, elements[i][1] )
         h_1S_Var.GetXaxis().ChangeLabel(i+1,45)
-        h_2S_Var.SetBinContent(i+1,float(elements[i][5])-float(elements[i][4]))
+        h_2S_Var.SetBinContent(i+1,0.5*(float(elements[i][5])-float(elements[i][4])))
         h_2S_Var.GetXaxis().SetBinLabel(i+1, elements[i][1] )
         h_2S_Var.GetXaxis().ChangeLabel(i+1,45)
 
@@ -123,13 +126,12 @@ for op in ops.operator:
     h_2S_Var.SetMinimum(0)
     h_2S_Var.SetMinimum(h_2S_Var.GetMaximum()*1.1)
     h_2S_Var.SetFillColor(ROOT.kCyan)
-    h_2S_Var.SetTitle("")
+    h_2S_Var.SetTitle(op)
     h_1S_Var.Draw("same")
     h_1S_Var.SetFillColor(ROOT.kBlue)
-    h_1S_Var.SetTitle("")
+    h_1S_Var.SetTitle(op)
 
     leg = ROOT.TLegend(0.6,0.7,0.9,0.9)
-    leg.SetHeader("Legend","C")
     leg.AddEntry(h_1S_Var,"1 Sigma Width","f")
     leg.AddEntry(h_2S_Var,"2 Sigma Width","f")
     leg.Draw()
@@ -138,3 +140,4 @@ for op in ops.operator:
     ROOT.gPad.SetGrid()
     # printout
     c1.Print(cf.tag + "/results_{}.png".format(op),".png")
+    c1.Print(cf.tag + "/results_{}.root".format(op),".root")

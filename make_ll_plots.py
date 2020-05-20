@@ -42,6 +42,7 @@ for op in ops.operator :
         
         # rename ll file and move to folder
         os.system("mv ll.png ll_scans/{}_{}_ll_scan.png\n".format(op,var)) 
+        os.system("mv ll.root ll_scans/{}_{}_ll_scan.root\n".format(op,var)) 
      
 # come back to script dir
 os.chdir(script_dir)

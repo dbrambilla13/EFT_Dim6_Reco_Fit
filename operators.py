@@ -27,7 +27,7 @@ operator['cHq3'] = {
 }
 
 operator['cW'] = {
-                    'variables' : ('pt1',), # already known
+                    'variables' : ('pt1','jetpt1','mll','detajj'), # already known
                     'range' : (-1,1)
 }
 
@@ -57,10 +57,10 @@ operator['cqq3'] = {
                     'range' : (-1.0,1.0)
 }
 
-operator['cHl1'] = {
-                    'variables' : ('pt1','pt2','mll','met',),
-                    'range' : (-100,100)
-}
+# operator['cHl1'] = {
+#                     'variables' : ('pt1','pt2','mll','met',),
+#                     'range' : (-300,300)
+# }
 
 # missing BSM term 
 # operator['cHl3'] = {

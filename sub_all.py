@@ -95,7 +95,7 @@ for op in ops.operator :
 
 
 # submit all jobs to condor
-os.system("for i in *.sub; do condor_submit $i;  done")
+# os.system("for i in *.sub; do condor_submit $i;  done")
 
 # come back to script dir
 os.chdir(script_dir)
