@@ -235,6 +235,7 @@ void draw_v1(std::string variable = "k_my_1",std::string var_name = "default") {
   graphScan->GetYaxis()->SetTitle("-2 #Delta LL");
   
   graphScan  ->Draw("al");
+  graphScan->GetYaxis()->SetRangeUser(0,10);
   //   graphScan  ->Draw("aPl");
   
   if (graphScanData) {

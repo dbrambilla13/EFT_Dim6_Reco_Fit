@@ -63,10 +63,10 @@ histo2Sigma = ROOT.TH1F("histo2Sigma","histo2Sigma",nbins,0,nbins)
 for i in range(nbins):
     histo1Sigma.SetBinContent(i+1,0.5*(float(records[i][3])-float(records[i][2])))
     histo1Sigma.GetXaxis().SetBinLabel(i+1,records[i][0] + ' (' + records[i][1] + ')')
-    histo1Sigma.GetXaxis().ChangeLabel(i+1,45)
+    histo1Sigma.GetXaxis().ChangeLabel(i+1,-45)
     histo2Sigma.SetBinContent(i+1,0.5*(float(records[i][5])-float(records[i][4])))
     histo2Sigma.GetXaxis().SetBinLabel(i+1,records[i][0] + ' (' + records[i][1] + ')')
-    histo2Sigma.GetXaxis().ChangeLabel(i+1,45)
+    histo2Sigma.GetXaxis().ChangeLabel(i+1,-45)
 
 c1 = ROOT.TCanvas()
 
@@ -80,8 +80,8 @@ histo1Sigma.SetFillColor(ROOT.kRed)
 
 
 leg = ROOT.TLegend(0.1,0.7,0.4,0.9)
-leg.AddEntry(histo1Sigma,"1 Sigma Width","f")
-leg.AddEntry(histo2Sigma,"2 Sigma Width","f")
+leg.AddEntry(histo1Sigma,"1 #sigma half width","f")
+leg.AddEntry(histo2Sigma,"2 #sigma half width","f")
 leg.Draw()
 
 ROOT.gStyle.SetOptStat(0)
@@ -115,10 +115,10 @@ for op in ops.operator:
     for i in range(nbins):
         h_1S_Var.SetBinContent(i+1,0.5*(float(elements[i][3])-float(elements[i][2])))
         h_1S_Var.GetXaxis().SetBinLabel(i+1, elements[i][1] )
-        h_1S_Var.GetXaxis().ChangeLabel(i+1,45)
+        # h_1S_Var.GetXaxis().ChangeLabel(i+1,45)
         h_2S_Var.SetBinContent(i+1,0.5*(float(elements[i][5])-float(elements[i][4])))
         h_2S_Var.GetXaxis().SetBinLabel(i+1, elements[i][1] )
-        h_2S_Var.GetXaxis().ChangeLabel(i+1,45)
+        # h_2S_Var.GetXaxis().ChangeLabel(i+1,45)
 
     c1 = ROOT.TCanvas()
 
@@ -132,8 +132,8 @@ for op in ops.operator:
     h_1S_Var.SetTitle(op)
 
     leg = ROOT.TLegend(0.6,0.7,0.9,0.9)
-    leg.AddEntry(h_1S_Var,"1 Sigma Width","f")
-    leg.AddEntry(h_2S_Var,"2 Sigma Width","f")
+    leg.AddEntry(h_1S_Var,"1 #sigma half width","f")
+    leg.AddEntry(h_2S_Var,"2 #sigma half width","f")
     leg.Draw()
 
     ROOT.gStyle.SetOptStat(0)
