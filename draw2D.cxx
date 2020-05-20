@@ -301,6 +301,7 @@ void draw2D(std::string xName = "r_{1}", std::string yName = "r_{3}", std::strin
   
   
   cc2->SaveAs("ll_scan_2D.png");
+  cc2->SaveAs("ll_scan_2D.root");
   
   
 }

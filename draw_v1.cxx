@@ -302,6 +302,7 @@ void draw_v1(std::string variable = "k_my_1",std::string var_name = "default") {
   
   
   cc->SaveAs("ll.png");
+  cc->SaveAs("ll.root");
 
   vector <float> sigma1_x = getLSintersections(graphScan,1.0);
   vector <float> sigma2_x = getLSintersections(graphScan,3.84);
