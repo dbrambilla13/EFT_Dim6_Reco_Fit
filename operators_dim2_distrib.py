@@ -22,18 +22,18 @@ operator['cHbox'] = {
 
 
 operator['cHq3'] = {
-                    'variables' : ('pt1VSmjj','jetpt1VSmjj','mllVSmjj','detajjVSmjj',), # to be invented
+                    'variables' : ('pt1VSmjj','jetpt1VSmjj','mllVSmjj','detajjVSmjj',), 
                     'range' : (-4,4)
 }
 
 operator['cW'] = {
-                    'variables' : ('pt1VSmjj','mllVSmjj','jetpt1VSmjj','detajjVSmjj',), # already known
+                    'variables' : ('pt1VSmjj','mllVSmjj','jetpt1VSmjj','detajjVSmjj',), 
                     'range' : (-1,1)
 }
 
 operator['cll1'] = {
-                    'variables' : ('pt1VSmjj','jetpt1VSmjj','mllVSmjj','detajjVSmjj',), # to be invented
-                    'range' : (-15,5)
+                    'variables' : ('pt1VSmjj','jetpt1VSmjj','mllVSmjj','detajjVSmjj',),
+                    'range' : (-5,5)
 }
 
 

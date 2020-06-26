@@ -10,7 +10,7 @@
 #include "tdrstyle.C"
 
 
-void draw2D(std::string xName = "r_{1}", std::string yName = "r_{3}", std::string xNameVar = "r1", std::string yNameVar = "r3" , int dimension = 2 , std::string cut = "1", int FillHighLL = 1,   float lumi = 15.2) {
+void draw2D(std::string xName = "r_{1}", std::string yName = "r_{3}", std::string xNameVar = "r1", std::string yNameVar = "r3" , int dimension = 2 , std::string cut = "1", int FillHighLL = 1,   float lumi = 59.74) {
   
   
   gStyle->SetOptStat(0);

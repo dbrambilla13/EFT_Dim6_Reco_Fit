@@ -22,17 +22,15 @@ os.chdir(cf.tag)
 # full dim6 operators list
 op_list = cf.operator_list
 
-# # create output csv file (and REMOVE the older one)
-# f = open("results.csv","w")
-# # write first line
-# f.write("operator,variable,1sigmaL,1sigmaR,2sigmaL,2sigmaR\n")
-# f.close()
+# create output csv file (and REMOVE the older one)
+f = open("results.csv","w")
+# write first line
+f.write("operator,variable,1sigmaL,1sigmaR,2sigmaL,2sigmaR\n")
+f.close()
 
 # define output dir for likelihood scans
-# if (os.path.isdir("ll_scans") == False):
-    # os.mkdir("ll_scans")
-
-# now the true code begins!
+if (os.path.isdir("ll_scans") == False):
+    os.mkdir("ll_scans")
 
 for op in ops.operator :
     for var in ops.operator[op]['variables'] :
@@ -95,7 +93,7 @@ for op in ops.operator :
 
 
 # submit all jobs to condor
-# os.system("for i in *.sub; do condor_submit $i;  done")
+os.system("for i in *.sub; do condor_submit $i;  done")
 
 # come back to script dir
 os.chdir(script_dir)

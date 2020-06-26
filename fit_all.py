@@ -1,3 +1,7 @@
+# this is just a first try
+# use the more complete scripts sub_all.py and sub_all_2Ops.py
+
+
 # first setup combine ... ()
 # cd ~/combine/CMSSW_10_2_13/src/ ; cmsenv ; cd -
 

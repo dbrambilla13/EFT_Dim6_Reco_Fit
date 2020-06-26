@@ -116,7 +116,7 @@ void draw_v1(std::string variable = "k_my_1",std::string var_name = "default") {
   tex2->SetLineWidth(2);
   
   TLatex * tex3;
-  tex3 = new TLatex(0.236,0.92,"L = XX fb^{-1}  Preliminary");
+  tex3 = new TLatex(0.236,0.92,"L = 59.74 fb^{-1}  Preliminary");
   tex3->SetNDC();
   tex3->SetTextFont(52);
   tex3->SetTextSize(0.035);
@@ -264,12 +264,17 @@ void draw_v1(std::string variable = "k_my_1",std::string var_name = "default") {
   line2->SetLineColor(kRed);
   line2->Draw();
   
-  TLegend* leg = new TLegend(0.1,0.7,0.48,0.9);
-  leg->AddEntry(graphScan,"Expected","l");
-  if (graphScanData) {
-    leg->AddEntry(graphScanData,"Observed","l");
-  }
+  // TLegend* leg = new TLegend(0.1,0.7,0.48,0.9);
+  // leg->AddEntry(graphScan,"Expected","l");
+  // if (graphScanData) {
+  //   leg->AddEntry(graphScanData,"Observed","l");
+  // }
   
+    
+  TLegend* leg = new TLegend(0.1,0.7,0.48,0.9);
+  leg->AddEntry(graphScanData,"Likelihood scan","l");
+ 
+
   //   leg->AddEntry(graphScan,"Old","l");
   //   if (graphScanData) {
   //     leg->AddEntry(graphScanData,"New","l");

@@ -1,4 +1,4 @@
-tag = 'def_1op_1var'
+tag = 'final_testing'
 
 # various parameters
 combine_folder="/afs/cern.ch/user/d/dbrambil/combine/CMSSW_10_2_13/src/"

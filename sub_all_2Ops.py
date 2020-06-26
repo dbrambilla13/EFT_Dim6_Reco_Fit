@@ -1,4 +1,4 @@
-# run with python sub_all.py config_file.py operators_file.py
+# run with python sub_all_2Ops.py config_file.py operators_file.py
 
 import os
 import sys

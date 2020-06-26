@@ -28,6 +28,6 @@ op_couple['cW_cll1'] ={
     'op1' : 'cW',
     'op2' : 'cll1',
     'range_op1' : ( -2.0, 2.0),
-    'range_op2' : (-20.0,20.0),
+    'range_op2' : ( -4.0, 4.0),
     'variables' : ('pt1','jetpt1','pt1VSmjj','jetpt1VSmjj',),
 }

@@ -1,4 +1,4 @@
-tag = 'def_2op'
+tag = 'two_ops_final_testing'
 
 # various parameters
 combine_folder="/afs/cern.ch/user/d/dbrambil/combine/CMSSW_10_2_13/src/"

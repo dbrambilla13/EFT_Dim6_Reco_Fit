@@ -93,8 +93,8 @@ histo1Sigma.GetYaxis().SetRangeUser(0,5)
 c1.Print(cf.tag + "/results_all_zoom.png",".png")
 c1.Print(cf.tag + "/results_all_zoom.root",".root")
 
-# c1.SetLogy()
-# c1.Print(cf.tag + "/results_log.png",".png")
+c1.SetLogy()
+c1.Print(cf.tag + "/results_log.png",".png")
 
 
 # make variable comparison prints for every operator
